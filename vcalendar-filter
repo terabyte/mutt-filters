@@ -31,6 +31,16 @@ use Text::Autoformat;
 my $body = eval { local $/ = undef; <> };
 my $calendar = Data::ICal->new(data => $body);
 
+# If parsing failed, try parsing as version 1.0
+$calendar = Data::ICal->new(data => $body, vcal10 => 1) unless $calendar;
+
+# If parsing failed, give up :-(
+unless ( $calendar ) {
+    print "Unable to parse vcalendar: ", $calendar->error_message, "\n";
+    print $body;
+    exit 1;
+}
+
 foreach my $entry ( @{$calendar->{entries}} ) {
     my $properties;
 
@@ -60,6 +70,7 @@ foreach my $entry ( @{$calendar->{entries}} ) {
         }
     }
     elsif ( $entry->ical_entry_type eq 'VEVENT' ) {
+        print '-' x 72, "\n";
         foreach my $key ( qw(summary BR description BR location organizer dtstart dtend) ) {
             if ( $key eq 'BR' ) {
                 print "\n";
