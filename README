@@ -1,0 +1,22 @@
+This is a collection (okay, currently one) of scripts that can be used to
+filter non-text/plain messages in mutt so they're readable in the internal
+pager (in a simple text/plain representation)
+
+You need something like this in your muttrc ...
+
+autoview text/calendar
+alternative_order text/plain text/html text/*
+
+which instructs mutt that the text/calendar MIME type can be automatically
+viewed, but you prefer to see text/plain and text/html first.
+
+Lastly, in your mailcap (either /etc/mailcap or ~/.mailcap) you need something
+like ...
+
+text/calendar; /path/to/vcalendar-filter; copiousoutput
+
+Any problems/bugs/improvements or feedback of any type is welcome.
+
+martyn@dollyfish.net.nz
+
+http://dollyfish.net.nz/projects/mutt-filters
