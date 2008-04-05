@@ -1,7 +1,21 @@
+Overview
+--------
 This is a collection (okay, currently one) of scripts that can be used to
 filter non-text/plain messages in mutt so they're readable in the internal
 pager (in a simple text/plain representation)
 
+Dependancies
+------------
+Perl modules
+    * Data::ICal
+    * Text::Autoformat
+
+These are available as Debian packages (in etch at least)
+    * libdata-ical-perl
+    * libtext-autoformat-perl
+
+Installation
+------------
 You need something like this in your muttrc ...
 
 autoview text/calendar
