@@ -4,7 +4,7 @@ This is a collection (okay, currently one) of scripts that can be used to
 filter non-text/plain messages in mutt so they're readable in the internal
 pager (in a simple text/plain representation)
 
-Dependancies
+Dependencies
 ------------
 Perl modules
     * Data::ICal
@@ -18,7 +18,7 @@ Installation
 ------------
 You need something like this in your muttrc ...
 
-autoview text/calendar
+auto_view text/calendar
 alternative_order text/plain text/html text/*
 
 which instructs mutt that the text/calendar MIME type can be automatically
